@@ -12,7 +12,12 @@ class MediumscraperItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     title = scrapy.Field()
+    publish_time = scrapy.Field()
     url = scrapy.Field()
     author = scrapy.Field()
     author_url = scrapy.Field()
+    headings = scrapy.Field()
+    contents = scrapy.Field()
+    mins_read = scrapy.Field()
+    claps = scrapy.Field()
     pass
