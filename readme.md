@@ -7,6 +7,6 @@
 4. conda install pymongo
 
 ### sample command: 
-cd medium/mediumScrapder
-scrapy crawl my_scraper -o sample.jl -a tag='datascience' -a date='2018/01/01/'
+1. cd medium/mediumScrapder
+2. scrapy crawl my_scraper -o sample.jl -a tag='datascience' -a date='2018/01/01/'
 
