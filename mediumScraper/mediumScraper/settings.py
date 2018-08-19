@@ -8,15 +8,22 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+from fake_useragent import UserAgent
+ua = UserAgent()
 
 BOT_NAME = 'mediumScraper'
 
 SPIDER_MODULES = ['mediumScraper.spiders']
 NEWSPIDER_MODULE = 'mediumScraper.spiders'
 
+# MongoDB settings
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "mediumPosts"
+MONGODB_COLLECTION = "blogs"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'mediumScraper (+http://www.yourdomain.com)'
+# USER_AGENT = ua.random
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -27,7 +34,7 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 5
+DOWNLOAD_DELAY = 2
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -64,9 +71,10 @@ DOWNLOAD_DELAY = 5
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'mediumScraper.pipelines.MediumscraperPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'mediumScraper.pipelines.PreprocessPipeline': 300,
+   'mediumScraper.pipelines.MongDBPipeline': 400
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html

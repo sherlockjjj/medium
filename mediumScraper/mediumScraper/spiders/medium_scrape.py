@@ -1,20 +1,13 @@
 import scrapy
 from mediumScraper.items import MediumscraperItem
-from datetime import datetime
-import re
 
 class MediumScraper(scrapy.Spider):
 	name = "my_scraper"
-	base_url = 'https://medium.com/tag/data-science/archive/2018/01/'
-	start_urls = []
-	npages = 5
 
-	for i in range(1, 2):
-		if i < 10:
-			day = "0"+str(i)
-		else:
-			day = str(i)
-		start_urls.append(base_url+day+"")
+	def __init__(self, tag='datescience', date='2018/08/16'):
+		self.tag = tag
+		self.date = date
+		self.start_urls = ['https://medium.com/tag/{tag}/archive/{date}'.format(tag=tag, date=date)]
 
 	def parse(self, response):
 		pathSet = set()
@@ -31,7 +24,6 @@ class MediumScraper(scrapy.Spider):
 	def parse_dir_contents(self, response):
 		item = MediumscraperItem()
 
-		# Getting Article Titled
 		item['title'] = response.xpath("//meta[@property='og:title']/@content").extract()
 		item['publish_time'] = response.xpath("//meta[@property='article:published_time']/@content").extract()
 		item['author'] = response.xpath("//meta[@property='author']/@content").extract()
@@ -41,6 +33,6 @@ class MediumScraper(scrapy.Spider):
 		item['contents'] = response.xpath("//p/descendant::text()").extract()
 		item['mins_read'] = response.xpath("//meta[@name='twitter:data1']/@value").extract()
 		item['claps'] = response.xpath("//aside[contains(@class, 'u-marginAuto u-maxWidth1000 js-postLeftSidebar')]//ul/li/div[contains(@class, 'multirecommend js-actionMultirecommend u-flexColumn u-marginBottom10 u-width60')]/span/button/text()").extract()
-
-
+		item['lang'] = response.xpath("//main/article/@lang").extract()
+		item['tag'] = self.tag
 		yield item

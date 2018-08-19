@@ -1,9 +1,12 @@
-Medium Recommender Project
-version: 0.1
-Date Started: 07/13/2018
-Date Finished: 
+## Medium Recommender Project
 
-Scraper Ingestion Pipeline
-Specs:
-1. Working Scraper that scrapes articles from medium for certain tags and store data in S3.
+### Install Requirements:
+1. conda create env -n medium
+2. source activate medium
+3. conda install -c conda-forge scrapy
+4. conda install pymongo
+
+### sample command: 
+cd medium/mediumScrapder
+scrapy crawl my_scraper -o sample.jl -a tag='datascience' -a date='2018/01/01/'
 

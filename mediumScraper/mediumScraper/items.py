@@ -20,4 +20,6 @@ class MediumscraperItem(scrapy.Item):
     contents = scrapy.Field()
     mins_read = scrapy.Field()
     claps = scrapy.Field()
+    lang = scrapy.Field()
+    tag = scrapy.Field()
     pass
