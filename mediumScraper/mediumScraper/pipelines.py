@@ -35,14 +35,14 @@ class PreprocessPipeline(object):
             # '2.9K'
             if item['claps'][-1] == 'K':
                 temp = item['claps'].strip('K').split('.')
-                item['claps'] = int(temp[0]) * 1000 + int(item[1]) * 100
+                item['claps'] = int(temp[0]) * 1000 + int(temp[1]) * 100
             else:
                 item['claps'] = int(item['claps'])
         else:
             item['claps'] = 0
         return item
 
-        
+
 
 class MongDBPipeline(object):
 
