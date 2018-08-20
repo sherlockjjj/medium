@@ -1,18 +1,34 @@
-## Medium Recommender Project
+# Medium Recommender Project
 
-### Install Requirements:
-1. conda create env -n medium
-2. source activate medium
-3. conda install -c conda-forge scrapy
-4. conda install pymongo
+## Install Requirements:
+* Install Node.js
+* Install MongoDB
+* Create conda environment for mediumScrapder
 
-### sample command: 
-1. cd medium/mediumScrapder
-2. mongod --dbpath ~/data/db
-3. scrapy crawl my_scraper -o sample.jl -a tag='datascience' -a date='2018/01/01/'
+```
+conda create env -n medium
+source activate medium
+conda install -c conda-forge scrapy
+conda install pymongo
+```
 
-### Web App Install Requirements:
-1. npm install -g @angular/cli
-2. cd my-medium-app
-3. ng serve 
+## Running the Scraper:
+* Start mongodb
 
+```
+mongod --dbpath ~/data/db
+```
+
+* Start Scraper in a different window
+
+```
+cd medium/mediumScrapder
+scrapy crawl my_scraper -o sample.jl -a tag='datascience' -a date='2018/01/01/'
+```
+
+## Web App Install Requirements:
+```
+npm install -g @angular/cli
+cd my-medium-app
+ng serve
+```
