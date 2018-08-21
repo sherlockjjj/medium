@@ -1,0 +1,8 @@
+<h2>My Topics</h2>
+<ul class="topics">
+  <li *ngFor="let topic of topics">
+    <a routerLink="/articles/{{topic.name}}">
+      <span class="badge">{{topic.name}}</span>
+    </a>
+  </li>
+</ul>

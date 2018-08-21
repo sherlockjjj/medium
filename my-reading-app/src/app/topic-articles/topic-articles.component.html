@@ -1,0 +1,6 @@
+<div *ngIf="articles">
+  <li *ngFor="let article of articles">
+    <span>Title: {{ article.title }} written by {{ article.author }} </span>
+  </li>
+</div>
+<button (click)="goBack()">go back</button>
