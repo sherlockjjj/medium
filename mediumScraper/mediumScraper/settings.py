@@ -8,8 +8,8 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-from fake_useragent import UserAgent
-ua = UserAgent()
+# from fake_useragent import UserAgent
+# ua = UserAgent()
 
 BOT_NAME = 'mediumScraper'
 
@@ -20,7 +20,7 @@ NEWSPIDER_MODULE = 'mediumScraper.spiders'
 MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
 MONGODB_DB = "mediumPosts"
-MONGODB_COLLECTION = "blogs"
+# MONGODB_COLLECTION = "blogs"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = ua.random

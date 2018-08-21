@@ -54,8 +54,7 @@ class MongDBPipeline(object):
     def open_spider(self, spider):
         self.client = pymongo.MongoClient(self.mongodb_server, self.mongodb_port)
         self.db = self.client[self.mongo_db]
-        self.collection = settings['MONGODB_COLLECTION']
 
     def process_item(self, item, spider):
-        self.db[self.collection].insert_one(dict(item))
+        self.db[item['tag']].insert_one(dict(item))
         return item
