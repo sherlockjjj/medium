@@ -44,7 +44,14 @@ export class TopicService {
           title: article.title,
           id: article._id,
           tag: article.tag,
-          author: article.author
+          author: article.author,
+          publish_time: article.publish_time,
+          url: article.url,
+          author_url: article.author_url,
+          headings: article.headings,
+          contents: article.contents,
+          min_read: article.min_read,
+          claps: article.claps
         };
       });
     }));

@@ -1,8 +1,11 @@
-<h2>My Topics</h2>
+<h2>Trending Topics</h2>
 <ul class="topics">
   <li *ngFor="let topic of topics">
-    <a routerLink="/articles/{{topic.name}}">
-      <span class="badge">{{topic.name}}</span>
-    </a>
-  </li>
+    <div class="button-row">
+      <button mat-raised-button color="primary">
+        <a mat-raised-button routerLink="/articles/{{topic.name}}">{{topic.name}}</a>
+      </button>
+    </div>
+ </li>
 </ul>
+
