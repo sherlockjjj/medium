@@ -35,10 +35,10 @@ ng serve
 
 ## App Snapshots
  * Dashboard View:
-![Dash Board View](./app-snapshots/dashboard-view.jpg)
+![Dash Board View](./app-snapshots/vesion0.1/dashboard-view.jpg)
 
  * Topics View:
-![Topics View](./app-snapshots/topics-view.jpg)
+![Topics View](./app-snapshots/version0.1/topics-view.jpg)
 
  * Articles View:
-![Articles View](./app-snapshots/articles-view.jpg)
+![Articles View](./app-snapshots/version0.1/articles-view.jpg)
