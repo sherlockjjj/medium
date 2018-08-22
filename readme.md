@@ -29,13 +29,13 @@ scrapy crawl my_scraper -o sample.jl -a tag='datascience' -a date='2018/01/01/'
 ## Web App Install Requirements:
 ```
 npm install -g @angular/cli
-cd my-medium-app
+cd my-reading-app
 ng serve
 ```
 
 ## App Snapshots
  * Dashboard View:
-![Dash Board View](./app-snapshots/vesion0.1/dashboard-view.jpg)
+![Dash Board View](./app-snapshots/version0.1/dashboard-view.jpg)
 
  * Topics View:
 ![Topics View](./app-snapshots/version0.1/topics-view.jpg)
