@@ -6,7 +6,7 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import datetime
 import re
-import pymongo
+# import pymongo
 from scrapy.conf import settings
 from scrapy.exceptions import DropItem
 
@@ -35,7 +35,10 @@ class PreprocessPipeline(object):
             # '2.9K'
             if item['claps'][-1] == 'K':
                 temp = item['claps'].strip('K').split('.')
-                item['claps'] = int(temp[0]) * 1000 + int(temp[1]) * 100
+                if len(temp) == 1:
+                    item['claps'] = int(temp[0]) * 1000
+                else:
+                    item['claps'] = int(temp[0]) * 1000 + int(temp[1]) * 100
             else:
                 item['claps'] = int(item['claps'])
         else:

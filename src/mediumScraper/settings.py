@@ -8,8 +8,8 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-# from fake_useragent import UserAgent
-# ua = UserAgent()
+from fake_useragent import UserAgent
+ua = UserAgent()
 
 BOT_NAME = 'mediumScraper'
 
@@ -23,7 +23,7 @@ MONGODB_DB = "mediumPosts"
 # MONGODB_COLLECTION = "blogs"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = ua.random
+USER_AGENT = ua.random
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -73,9 +73,13 @@ DOWNLOAD_DELAY = 2
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'mediumScraper.pipelines.PreprocessPipeline': 300,
-   'mediumScraper.pipelines.MongDBPipeline': 400
+#   'mediumScraper.pipelines.MongDBPipeline': 400
 }
 
+RETRY_ENABLED = False
+DOWNLOAD_TIMEOUT = 15
+REDIRECT_ENABLED = False
+LOG_LEVEL = 'INFO'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True

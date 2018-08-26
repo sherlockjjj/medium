@@ -21,5 +21,5 @@ class MediumscraperItem(scrapy.Item):
     mins_read = scrapy.Field()
     claps = scrapy.Field()
     lang = scrapy.Field()
-    tag = scrapy.Field()
+    tags = scrapy.Field()
     pass

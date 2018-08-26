@@ -2,4 +2,5 @@
 *.jl
 **/.DS_Store
 .Rhistory
+.vscode/
 
