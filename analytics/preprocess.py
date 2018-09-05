@@ -1,5 +1,6 @@
 import unicodedata
 import pandas as pd
+import nltk
 
 
 class MediumBlogPost:
@@ -42,3 +43,49 @@ class MediumBlogPost:
 
     def to_frame(self):
         return pd.DataFrame({k: [v] for k, v in self.to_dict().items()})
+
+
+def tokenizer(text):
+    """
+    convert a string to list of string
+    """
+    return nltk.tokenize.word_tokenize(text)
+
+
+def get_stopwords(tokens):
+    """
+    get stopword tokens
+    """
+    stopwords = nltk.corpus.stopwords.words('english')
+    return [t for t in tokens if t.lower() in stopwords]
+
+
+def filter_stopwords(tokens):
+    """
+    drop stopword tokens
+    """
+    stopwords = nltk.corpus.stopwords.words('english')
+    return [t for t in tokens if t.lower() not in stopwords]
+
+
+def get_unusual_words(tokens):
+    """
+    get unusual word tokens
+    """
+    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+    return [t for t in tokens if t.lower() not in english_vocab]
+
+
+def filter_unusual_words(tokens):
+    """
+    drop unusual word tokens
+    """
+    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+    return [t for t in tokens if t.lower() in english_vocab]
+
+
+def word_tokenize(text):
+    """
+    convert a string to list of normal word tokens
+    """
+    return filter_unusual_words(filter_stopwords(tokenizer(text)))
