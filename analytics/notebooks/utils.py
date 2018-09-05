@@ -1,8 +1,8 @@
 import pandas as pd
-from ..preprocess import (word_tokenize,
-                          get_stopwords,
-                          get_unusual_words,
-                          tokenizer)
+from .. preprocess import (word_tokenize,
+                           get_stopwords,
+                           get_unusual_words,
+                           tokenizer)
 
 
 def parse_date(x):
