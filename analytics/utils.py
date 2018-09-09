@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from preprocess import (word_tokenize,
                         get_stopwords,
@@ -23,11 +24,13 @@ def get_word_count(x):
     return normal word count, stop word count, unusual word count
     """
     wc = x.apply(lambda text: len(word_tokenize(text)))
+    unique_wc = x.apply(lambda text: len(np.unique(tokenizer(text))))
     stop_wc = x.apply(lambda text: len(get_stopwords(tokenizer(text))))
     unusual_wc = x.apply(lambda text: len(get_unusual_words(tokenizer(text))))
     return pd.DataFrame(
         {
             '{}_word_count'.format(x.name): wc,
+            '{}_unique_word_count'.format(x.name): unique_wc,
             '{}_stopword_count'.format(x.name): stop_wc,
             '{}_unusual_word_count'.format(x.name): unusual_wc,
             '{}_total_word_count'.format(x.name): wc + stop_wc + unusual_wc
