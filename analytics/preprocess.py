@@ -49,7 +49,8 @@ def tokenizer(text):
     """
     convert a string to list of string
     """
-    return nltk.tokenize.word_tokenize(text)
+    # return nltk.tokenize.word_tokenize(text)
+    return nltk.RegexpTokenizer(pattern=r"(?u)\b\w\w+\b").tokenize(text)
 
 
 def get_stopwords(tokens):
@@ -71,6 +72,7 @@ def filter_stopwords(tokens):
 def get_unusual_words(tokens):
     """
     get unusual word tokens
+    unusual words are words with plural forms or tense
     """
     english_vocab = set(w.lower() for w in nltk.corpus.words.words())
     return [t for t in tokens if t.lower() not in english_vocab]
@@ -79,6 +81,7 @@ def get_unusual_words(tokens):
 def filter_unusual_words(tokens):
     """
     drop unusual word tokens
+    unusual words are words with plural forms or tense
     """
     english_vocab = set(w.lower() for w in nltk.corpus.words.words())
     return [t for t in tokens if t.lower() in english_vocab]
